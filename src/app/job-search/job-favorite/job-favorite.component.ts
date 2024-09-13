@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { JobsService } from '../../services/jobs.service';
 import { Job } from '../../models/job';
 
 @Component({
@@ -13,10 +12,11 @@ import { Job } from '../../models/job';
 })
 export class JobFavoriteComponent implements OnInit {
   favoriteJobs: Job[] = [];
+  private favoritesKey: string = 'favorites';
 
   constructor() {}
 
   ngOnInit() {
-    this.favoriteJobs = JobsService.favoriteData;
+    this.favoriteJobs = JSON.parse(sessionStorage.getItem(this.favoritesKey) || '[]');
   }
 }

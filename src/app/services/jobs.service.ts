@@ -8,16 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class JobsService {
   private url = './jobs';
-  private static _favoriteData: Job[];
-
+  private favoritesKey: string = 'favorites';
   constructor(private http: HttpClient) {}
 
-  public static get favoriteData(): Job[] {
-    return JobsService._favoriteData;
-  }
-
-  public static set favoriteData(data: Job[]) {
-    JobsService._favoriteData = data;
+ 
+  setfavoriteData(data: Job[]) {
+    debugger;
+    sessionStorage.setItem(this.favoritesKey, JSON.stringify(data));
   }
 
   getAllJobs(): Observable<Job[]> {
