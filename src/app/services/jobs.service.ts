@@ -13,7 +13,6 @@ export class JobsService {
 
  
   setfavoriteData(data: Job[]) {
-    debugger;
     sessionStorage.setItem(this.favoritesKey, JSON.stringify(data));
   }
 
